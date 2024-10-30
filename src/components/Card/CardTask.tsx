@@ -9,8 +9,6 @@ interface CardTaskProps {
     title: string;
     description: string;
     completed: boolean;
-
-    onCheckboxClick: () => void;
   };
 
 }
@@ -23,7 +21,7 @@ const CardTask: FC<CardTaskProps> = ({ task }) => {
         <Card 
             size="small" title={title}  
             extra={
-                <Checkbox onChange={task.onCheckboxClick} /> 
+                <Checkbox checked={completed}/> 
             } 
             style={{ width: 600 }}>
             <p>{description}</p>

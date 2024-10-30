@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.282f23b6.css","mappings":"AAAA,qBAGE,cAFA,gBACA,cACA,CAGF,kBAEE,eADA,iBACA","sources":["app.module.scss"],"sourcesContent":[".wrapper {\n  max-width: 640px;\n  padding: 0 20px;\n  margin: 0 auto;\n}\n\n.title {\n  text-align: center;\n  font-size: 36px;\n}"],"names":[],"sourceRoot":""}

@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
         <div className={style.wrapper}>
-            <h1 className={style.title}>Задачи</h1>
+            <h1 className={style.title}>Задачи на сегодня</h1>
 
             <CardList />
         </div>

@@ -3,9 +3,9 @@ import CardTask from "../Card/CardTask";
 import { Flex } from "antd";
 
 const cardsData = [
-    { id: 1, title: 'Купить молока', description: 'Надо купить молока для пирога', completed: false },
-    { id: 2, title: 'Сходить в зал', description: 'Не забыть кросовки', completed: true },
-    { id: 3, title: 'Сходить в магазин', description: 'Не забыть пакет с пакетами', completed: false },
+    { id: 1, title: 'Павел похвален', description: 'Надо его похвалить за то что он что то сделал', completed: false },
+    { id: 2, title: 'Павел унижен', description: 'А потому что просто так', completed: true },
+    { id: 3, title: 'Павел натурал', description: 'нет, определенно нет', completed: false },
 ]
 
 

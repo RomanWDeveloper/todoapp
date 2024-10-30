@@ -8,6 +8,7 @@ const cardsData = [
     { id: 3, title: 'Сходить в магазин', description: 'Не забыть пакет с пакетами', completed: false },
 ]
 
+
 const CardList: FC = () => {
     return (
         <Flex vertical={true} gap={16} className="card-list">

@@ -1,7 +1,10 @@
+import { AuthWrapper } from "./style"
+import { Outlet } from "react-router-dom"
+
 export const Auth = () => {
     return (
-        <div>
-            Auth
-        </div>
+        <AuthWrapper vertical={true}>
+            <Outlet/>
+        </AuthWrapper>
     )
 }

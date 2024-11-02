@@ -22,10 +22,10 @@ export const light: ThemeConfig = {
         colorText: colorText,
 
         colorBorder: colorPrimary,
-        colorPrimary: colorPrimary,
+        colorPrimary: colorActive,
         colorPrimaryActive: colorActive,
         colorPrimaryHover: colorHover,
-        colorLink: colorPrimary,
+        colorLink: colorActive,
 
         colorTextQuaternary: '#dbdbdb',
         colorTextTertiary: '#76767A',
@@ -50,11 +50,11 @@ export const light: ThemeConfig = {
         },
 
         Button: {
-            primaryColor: '#fff',
-            defaultColor: colorPrimary,
+            primaryColor: '#FFF',
+            defaultColor: colorActive,
             paddingInline: 17,
-            borderColorDisabled: '#d9d9d9',
-            colorSuccess: colorPrimary,
+            borderColorDisabled: colorActive,
+            // colorPrimary: colorActive,
         },
 
         Switch: {

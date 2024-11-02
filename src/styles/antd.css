@@ -1,9 +1,11 @@
-@media only screen and (max-width : 768px) {
-    /* скрыть заголовок в меню на моб */
-    .ant-menu-item::after {
-        display: none;
-    }
-    .ant-menu-title-content {
-        display: none;
-    }
+/* скрыть заголовок в меню на моб */
+.ant-menu-item::after {
+    display: none;
+}
+.ant-menu-title-content {
+    display: none;
+}
+.ant-otp-input {
+    border-color: var(--color-secondary);
+    height: 60px;
 }

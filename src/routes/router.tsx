@@ -8,7 +8,6 @@ import { createBrowserRouter } from "react-router-dom";
 const router = createBrowserRouter([
     {
       path: "/",
-      // laoyout
       element: <App/>,
 
       children: [
@@ -26,12 +25,12 @@ const router = createBrowserRouter([
 
     {
       path: "/auth",
-      // layout
       element: <Auth/>,
 
       children: [
         {
-          path: "/auth/login",
+          index: true,
+          path: "/auth/",
           element: <Login/>,
         },
       ],

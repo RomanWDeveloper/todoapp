@@ -1,8 +1,9 @@
 // components/CardTask/CardTask.tsx
 import {FC} from 'react';
 import { Button, Card, Checkbox, Flex, Space } from 'antd';
-import { DeleteOutlined, CheckOutlined } from '@ant-design/icons';
-import CheckableTag from 'antd/es/tag/CheckableTag';
+
+import Meta from 'antd/es/card/Meta';
+import { CloseOutlined } from '@ant-design/icons';
 
 export type Task = {
   id: number;
@@ -23,15 +24,22 @@ const CardTask: FC<CardTaskProps> = ({ task, onDelete, onCompleted }) => {
   return (
     <Space direction="vertical" size={16}>
         <Card 
-            size="small" title={title}  
-            extra={
-              <Flex gap={8}>
-                <Button type='primary' onClick={onCompleted} icon={<CheckOutlined />} style={{ backgroundColor: '#8BC34A' }}/>
-                <Button type='primary' onClick={onDelete} danger icon={<DeleteOutlined />}/>
+
+            actions={[
+              <Flex  gap={20} style={{ width: "100%", padding: "0 10px", justifyContent: "flex-end" }}>
+                  <Checkbox style={{ borderRadius: "50%" }} key="setting" checked={completed} onChange={onCompleted} />
+                  <CloseOutlined onClick={onDelete} style={{ color: "red" }} />
               </Flex>
-            } 
-            style={{ width: 600 }}>
-            <p>{description}</p>
+            ]}
+
+            bordered={false}
+            size="small" 
+            style={{ width: "100%" }}>
+
+            <Meta
+              title={title}
+              description={description}
+            />
         </Card>
   </Space>
   );

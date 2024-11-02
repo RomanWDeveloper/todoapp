@@ -1,24 +1,26 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import CardTask, { Task } from "../Card/CardTask";
 import { Flex } from "antd";
 
 interface CardListProps {
-    cardsData: Task[]
+    cardsData: Task[],
+    style: object
 }
 
-// удаление задачи
-const handleDeleteTask = (id: number) => {
-    
-}
+const CardList: FC<CardListProps> = ({ cardsData, style }) => {
 
-// выполнение задачи
-const handleCompletedTask = (id: number) => {
-    
-}
+    // удаление задачи
+    const handleDeleteTask = (id: number) => {
+        
+    }
 
-const CardList: FC<CardListProps> = ({ cardsData }) => {
+    // выполнение задачи
+    const handleCompletedTask = (id: number) => {
+
+      }
+
     return (
-        <Flex vertical={true} gap={16} className="card-list">
+        <Flex style={style} vertical={true} gap={16} className="card-list">
             {cardsData.map(card => 
                 <CardTask 
                     key={card.id} 

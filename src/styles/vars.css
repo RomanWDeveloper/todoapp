@@ -1,0 +1,8 @@
+/* light theme */
+
+:root {
+    --color-bg: #F7F7F7;
+    --color-text: #000;
+    --color-primary: #F7F7F7;
+    --color-secondary: #8BC34A;
+}

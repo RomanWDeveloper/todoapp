@@ -4,6 +4,7 @@ import { EmailForm } from './EmailForm';
 import { CodeForm } from './CodeForm';
 import { Flex } from './style';
 import { OTPProps } from 'antd/es/input/OTP';
+import { Flex as AntFlex } from 'antd';
 
 export const Login = () => {
     const [showCodeForm, setshowCodeForm] = useState(false);
@@ -28,13 +29,16 @@ export const Login = () => {
     }
 
     return (
-        <Flex vertical={true}>
-            <Title>Авторизация</Title>
-            {showCodeForm ? (
-                 <CodeForm sharedProps={sharedProps} onGoBack={handleGoBack} email={email}/>
-            ) : (
-                <EmailForm onEmailFormFinish={emailFormonFinish} />
-            )}
-        </Flex>
+        <AntFlex vertical={true} style={{padding: 0, margin: 0}}>
+            <Title level={1}>TaskCircle</Title>
+            <Flex vertical={true}>
+                <Title level={2}>Авторизация</Title>
+                {showCodeForm ? (
+                    <CodeForm sharedProps={sharedProps} onGoBack={handleGoBack} email={email}/>
+                ) : (
+                    <EmailForm onEmailFormFinish={emailFormonFinish} />
+                )}
+            </Flex>
+        </AntFlex>
     )
 };

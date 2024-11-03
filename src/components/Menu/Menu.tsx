@@ -2,13 +2,20 @@ import { FC, useState } from 'react';
 import { HomeOutlined, PlusOutlined, SettingOutlined, UnorderedListOutlined, UserAddOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { AddButton, AntMenu } from './style';
+import { Link } from 'react-router-dom';
+import { TASK } from '@/configs/links/task';
+import { SETTINGS } from '@/configs/links/settings';
+import { USERS } from '@/configs/links/users';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
 const items: MenuItem[] = [
     {
         key: 'home',
-        icon: <HomeOutlined style={{ fontSize: 25 }}/>,
+        icon:
+            <Link to={'/'}> 
+                <HomeOutlined style={{ fontSize: 25 }}/>
+            </Link>,
         label: 'Главная',
     },
 
@@ -20,17 +27,27 @@ const items: MenuItem[] = [
 
     {
         key: 'addTask',
-        icon: <AddButton value="large"  type="primary" shape="circle"  icon={<PlusOutlined style={{ fontSize: 30, color: 'white' }}/>} />,
+        icon: 
+            <Link to={TASK.CREATE.fullPath}>
+                <AddButton value="large"  type="primary" shape="circle"  icon={<PlusOutlined style={{ fontSize: 30, color: 'white' }}/>} />
+            </Link>,
         label: 'Добавить задачу',
     },
     {
         key: 'users',
-        icon: <UserAddOutlined style={{ fontSize: 25 }}/>,
+        icon: 
+        <Link to={USERS.INVITES.fullPath}>
+            <UserAddOutlined style={{ fontSize: 25 }}/>
+        </Link>,
+           
         label: 'Друзья',
     },
     {
         key: 'settings',
-        icon: <SettingOutlined style={{ fontSize: 25 }}/>,
+        icon: 
+            <Link to={SETTINGS.path}>
+            <SettingOutlined style={{ fontSize: 25 }}/>
+            </Link>,
         label: 'Настройки',
     },
 ];
@@ -54,6 +71,7 @@ export const Menu: FC = () => {
             bottom: 0,
             left: 0,
             justifyContent: 'center',
+            borderRadius: '20px 20px 0px 0px ',
         }} 
         mode="horizontal" 
         items={items} 

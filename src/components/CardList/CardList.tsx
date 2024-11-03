@@ -4,7 +4,7 @@ import { Flex } from "antd";
 
 interface CardListProps {
     cardsData: Task[],
-    style: object
+    style?: object
 }
 
 const CardList: FC<CardListProps> = ({ cardsData, style }) => {
@@ -20,7 +20,7 @@ const CardList: FC<CardListProps> = ({ cardsData, style }) => {
       }
 
     return (
-        <Flex style={style} vertical={true} gap={16} className="card-list">
+        <Flex style={{...style, width: "100%"}} vertical={true} gap={16} className="card-list">
             {cardsData.map(card => 
                 <CardTask 
                     key={card.id} 

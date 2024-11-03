@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form,  Input } from "antd";
+import { Button, Checkbox, Flex, Form,  Input } from "antd";
 import { FC } from "react";
 
 
@@ -17,7 +17,7 @@ export const EmailForm: FC<EmailFormProps> = ({onEmailFormFinish}) => {
             scrollToFirstError
         >
             <Form.Item
-            
+            style={{marginBottom: 34}}
             name="email"
             label="E-mail"
             rules={[
@@ -32,28 +32,33 @@ export const EmailForm: FC<EmailFormProps> = ({onEmailFormFinish}) => {
             ]}
             >
             <Input style={{  borderColor: 'var(--color-secondary)' }}/>
+
+            
             </Form.Item>
-    
-            <Form.Item
-            name="agreement"
-            valuePropName="checked"
-            rules={[
-                {
-                validator: (_, value) =>
-                    value ? Promise.resolve() : Promise.reject(new Error('Не хороший')),
-                },
-            ]}
-    
-            >
-            <Checkbox>
-                Я ознакомлен с <a href=""> соглашением</a>
-            </Checkbox>
-            </Form.Item>
-            <Form.Item>
-            <Button type="primary" htmlType="submit">
-                Далее
-            </Button>
-            </Form.Item>
+
+            <Flex style={{ width: "100%" }} gap={10} justify="space-between">
+                <Button type="primary" htmlType="submit">
+                    Далее
+                </Button>
+                <Form.Item
+                
+                    name="agreement"
+                    valuePropName="checked"
+                    rules={[
+                        {
+                        validator: (_, value) =>
+                            value ? Promise.resolve() : Promise.reject(new Error('Согласитесь')),
+                        },
+                    ]}
+                >
+                    <Checkbox style={{fontSize: 13, alignItems: 'center'}}>
+                        Я ознакомлен  с <a href="">пользовательским соглашением</a>
+                    </Checkbox>
+                </Form.Item>
+                <Form.Item>
+
+                </Form.Item>
+            </Flex>
         </Form>
 );
 }

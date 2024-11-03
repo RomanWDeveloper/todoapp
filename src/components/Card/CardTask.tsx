@@ -1,15 +1,16 @@
 // components/CardTask/CardTask.tsx
 import {FC} from 'react';
-import { Button, Card, Checkbox, Flex, Space } from 'antd';
+import { Button, Flex } from 'antd';
 
-import Meta from 'antd/es/card/Meta';
-import { CloseOutlined } from '@ant-design/icons';
+import Title from 'antd/es/skeleton/Title';
+import { Card, Checkbox, Collapse } from './style';
 
 export type Task = {
   id: number;
   title: string;
-  description: string;
+  description?: string;
   completed: boolean;
+  subtasks?: Task[]
 };
 
 interface CardTaskProps {
@@ -19,29 +20,41 @@ interface CardTaskProps {
 }
 
 const CardTask: FC<CardTaskProps> = ({ task, onDelete, onCompleted }) => {
-  const { id, title, description, completed } = task;
+  const { id, title, description, completed, subtasks } = task;
 
   return (
-    <Space direction="vertical" size={16}>
-        <Card 
-
-            actions={[
-              <Flex  gap={20} style={{ width: "100%", padding: "0 10px", justifyContent: "flex-end" }}>
-                  <Checkbox style={{ borderRadius: "50%" }} key="setting" checked={completed} onChange={onCompleted} />
-                  <CloseOutlined onClick={onDelete} style={{ color: "red" }} />
-              </Flex>
-            ]}
-
+        <Card
             bordered={false}
-            size="small" 
-            style={{ width: "100%" }}>
+            size="default" 
+            style={{ width: "100%", padding: 0 }}>
 
-            <Meta
-              title={title}
-              description={description}
-            />
+            <Flex vertical={true}>
+                  <Checkbox  style={{padding: "0 15px"}} key="setting" checked={completed} onChange={onCompleted} >
+                    <h4 style={{margin: 0}}>{title}</h4>
+                  </Checkbox>
+                  
+                  {subtasks && subtasks.length > 0 && (
+                        <Collapse
+                          size="small"
+                          ghost={true}
+                          items={[{ key: '1', 
+                            label: 'Подзадачи', 
+                            children: (
+                              <Flex vertical={true} gap={30}>
+                                {subtasks.map(subtask => 
+                                  <Checkbox key={subtask.id} checked={subtask.completed} onChange={onCompleted}>
+                                    <h5 style={{margin: 0}}>{subtask.title}</h5>
+                                  </Checkbox>
+                                )}
+                              </Flex>
+                            )
+                          }]}
+                      />
+                  )}
+
+            </Flex>
+
         </Card>
-  </Space>
   );
 };
 

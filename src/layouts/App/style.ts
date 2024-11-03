@@ -8,7 +8,7 @@ export const AppWrapper = styled(Flex)`
     max-width: 500px;
     padding-bottom: 100px;
     position: relative;
-    background-color: var(--color-primary);
+    background-color: var(--color-bg);
 `;
 
 export const ContentWrapper = styled(Flex)`

@@ -1,24 +1,7 @@
 import { CardList } from "@/components/CardList";
 import { Flex, Typography } from "antd"
+import { HomeContent } from "./HomeContent";
 const { Title, Text } = Typography;
-
-const exampleData = [
-    { id: 1,
-        title: 'Задача 1',
-        description: 'Описание задачи',
-        completed: false
-    },
-    { id: 2,
-        title: 'Задача 2',
-        description: 'Описание задачи',
-        completed: true
-    },
-    { id: 3,
-        title: 'Задача 3',
-        description: 'Описание задачи',
-        completed: false
-    },
-]
 
 export const Home = () => {
     const currentDate = new Date();
@@ -49,15 +32,14 @@ export const Home = () => {
 
     return (
         <Flex vertical={true}>
-            <Flex vertical={true}>
-                <Title 
-                    level={2} style={{ margin: 0, fontSize: 32, textTransform: 'capitalize'  }}>
-                        {date.day} {monthNames[date.month]} 
-                    </Title>
-                <Text type="secondary">{date.dayOfWeek}</Text>
-            </Flex>
+            <Title 
+                level={2} style={{ margin: 0, fontSize: 32, textTransform: 'capitalize'  }}>
+                    {date.day} {monthNames[date.month]} 
+            </Title>
+            <Text type="secondary" style={{ marginBottom: 20 }}>{date.dayOfWeek}</Text>
 
-            <CardList style={{ marginTop: 30 }} cardsData={exampleData} />
+            <HomeContent />
+            
         </Flex>
     )
 }

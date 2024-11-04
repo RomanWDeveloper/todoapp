@@ -1,17 +1,7 @@
-// components/CardTask/CardTask.tsx
 import {FC} from 'react';
-import { Button, Flex } from 'antd';
-
-import Title from 'antd/es/skeleton/Title';
-import { Card, Checkbox, Collapse } from './style';
-
-export type Task = {
-  id: number;
-  title: string;
-  description?: string;
-  completed: boolean;
-  subtasks?: Task[]
-};
+import { Flex } from 'antd';
+import { Card, Checkbox, Collapse, Progress } from './style';
+import { Task } from '@/types/types';
 
 interface CardTaskProps {
   task: Task;
@@ -19,7 +9,7 @@ interface CardTaskProps {
   onCompleted: () => void;
 }
 
-const CardTask: FC<CardTaskProps> = ({ task, onDelete, onCompleted }) => {
+export const CardTask: FC<CardTaskProps> = ({ task, onDelete, onCompleted }) => {
   const { id, title, description, completed, subtasks } = task;
 
   return (
@@ -52,10 +42,16 @@ const CardTask: FC<CardTaskProps> = ({ task, onDelete, onCompleted }) => {
                       />
                   )}
 
+              {subtasks && subtasks.length > 0 && (
+                <Progress 
+                  percent={subtasks?.filter(subtask => subtask.completed).length / subtasks?.length * 100} 
+                  showInfo={false} 
+                  style={{width: "100%", position: "absolute", bottom: 0, display: 'flex', borderRadius: 0}}
+                  />
+              )}
+
             </Flex>
 
         </Card>
   );
 };
-
-export default CardTask;

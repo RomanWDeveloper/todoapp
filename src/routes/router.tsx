@@ -1,15 +1,20 @@
+import { App } from "@/layouts/App";
+import { createBrowserRouter } from "react-router-dom";
+import { main } from "./main";
+import { auth } from "./auth";
+
 import { SETTINGS } from "@/configs/links/settings";
 import { TASK } from "@/configs/links/task";
 import { USERS } from "@/configs/links/users";
-import { App } from "@/layouts/App";
 import { Auth } from "@/layouts/Auth";
-import { Home } from "@/views/App/Home";
-import { Invites } from "@/views/App/Users/Invites";
-import { Settings } from "@/views/App/Settings";
-import { TaskForm } from "@/views/App/TaskForm";
+import { Home } from "@/views/Main/Home";
+import { Invites } from "@/views/Main/Users/Invites";
+import { Settings } from "@/views/Main/Settings";
+import { TaskForm } from "@/views/Main/TaskForm";
 import { Login } from "@/views/Auth/Login";
-import { createBrowserRouter } from "react-router-dom";
-import { Users } from "@/views/App/Users";
+import { Users } from "@/views/Main/Users";
+import { Main } from "@/layouts/Main";
+
 
 const router = createBrowserRouter([
     {
@@ -17,59 +22,10 @@ const router = createBrowserRouter([
       element: <App/>,
 
       children: [
-        {
-          path: "/",
-          index: true,
-          element: <Home/>,
-        },
-        {
-          path: SETTINGS.path,
-          element: <Settings/>,
-        },
-
-        {
-          path: TASK.path ,
-
-          children: [
-            {
-              path: TASK.CREATE.path,
-              element: <TaskForm/>
-            }
-          ]
-        }, 
-        {
-          path: USERS.path,
-          element: <Users/>,
-
-          children: [
-            {
-              index: true,
-              path: USERS.INVITES.path,
-              element: <Invites/>
-            },
-            {
-              path: USERS.FRIENDS.path,
-              element: <Invites/>
-            }
-
-          ]
-        }
+        main,
+        auth,
       ],
     },
-
-    {
-      path: "/auth/",
-      element: <Auth/>,
-
-      children: [
-        {
-          index: true,
-          path: "/auth/",
-          element: <Login/>,
-        },
-      ],
-
-    }
 ]);
 
 export default router;

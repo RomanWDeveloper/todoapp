@@ -7,7 +7,6 @@ export const AuthWrapper = styled(Flex)`
     margin: 0 auto;
     max-width: 500px;
     position: relative;
-    background-color: var(--color-primary);
     display: flex;
     flex-direction: column;
     justify-content: center;

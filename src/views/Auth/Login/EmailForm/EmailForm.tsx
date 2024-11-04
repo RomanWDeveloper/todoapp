@@ -1,4 +1,5 @@
-import { Button, Checkbox, Flex, Form,  Input } from "antd";
+import { GoogleIconFilled, VkIconFilled } from "@/components/UI/CustomIcons/CustomIcons";
+import { Button, Checkbox, Divider, Flex, Form,  Input } from "antd";
 import { FC } from "react";
 
 
@@ -17,9 +18,9 @@ export const EmailForm: FC<EmailFormProps> = ({onEmailFormFinish}) => {
             scrollToFirstError
         >
             <Form.Item
-            style={{marginBottom: 34}}
+            style={{marginBottom: 25}}
             name="email"
-            label="E-mail"
+            
             rules={[
                 {
                 type: 'email',
@@ -31,33 +32,22 @@ export const EmailForm: FC<EmailFormProps> = ({onEmailFormFinish}) => {
                 },
             ]}
             >
-            <Input style={{  borderColor: 'var(--color-secondary)' }}/>
-
-            
+                <Input placeholder="E-mail"/>
             </Form.Item>
 
-            <Flex style={{ width: "100%" }} gap={10} justify="space-between">
-                <Button type="primary" htmlType="submit">
-                    Далее
+            <Flex style={{ width: "100%" }} gap={10} vertical={true} justify="space-between">
+                <Button type="primary" htmlType="submit" style={{width: '100%'}}>
+                    Продолжить
                 </Button>
-                <Form.Item
-                
-                    name="agreement"
-                    valuePropName="checked"
-                    rules={[
-                        {
-                        validator: (_, value) =>
-                            value ? Promise.resolve() : Promise.reject(new Error('Согласитесь')),
-                        },
-                    ]}
-                >
-                    <Checkbox style={{fontSize: 13, alignItems: 'center'}}>
-                        Я ознакомлен  с <a href="">пользовательским соглашением</a>
-                    </Checkbox>
-                </Form.Item>
-                <Form.Item>
 
-                </Form.Item>
+                <Divider />
+                
+                <Button variant="outlined"icon={<VkIconFilled />}>
+                    Войти с помощью VK
+                </Button>
+                {/* <Button variant="outlined"icon={<GoogleIconFilled />}>
+                    Войти с помощью Google
+                </Button> */}
             </Flex>
         </Form>
 );

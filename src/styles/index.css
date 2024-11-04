@@ -1,6 +1,5 @@
 @import './fonts.css';
 @import './antd.css';
-@import './vars.css';
 
 :root {
     font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

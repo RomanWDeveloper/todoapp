@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
-import CardTask, { Task } from "../Card/CardTask";
 import { Flex } from "antd";
+import { Task } from "@/types/types";
+import { CardTask } from "../CardTask";
 
 interface CardListProps {
     cardsData: Task[],

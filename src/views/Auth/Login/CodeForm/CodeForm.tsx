@@ -1,8 +1,10 @@
-import { Button,  Flex,  Form,  Input } from "antd";
-import Title from 'antd/es/typography/Title';
+import { Button,  Flex,  Input, Statistic } from "antd";
 import Text from 'antd/es/typography/Text';
-import { FC } from "react";
+import { FC, useState } from "react";
 
+const deadline = Date.now() + 1000 * 10;
+
+const { Countdown } = Statistic;
 
 interface CodeFormProps {
     sharedProps: any,
@@ -11,6 +13,12 @@ interface CodeFormProps {
 }
 
 export const CodeForm: FC<CodeFormProps> = ({sharedProps, onGoBack, email}) => {
+    const [isTimerEnd, setIsTimerEnd] = useState(false);
+   
+    const onFinish = () => {
+        setIsTimerEnd(true);
+    }
+    
     return (            
         <Flex vertical={true} > 
             <Text style={{marginBottom: 20}} type="secondary">
@@ -19,7 +27,22 @@ export const CodeForm: FC<CodeFormProps> = ({sharedProps, onGoBack, email}) => {
 
             <Input.OTP autoFocus={true} length={6} {...sharedProps} />
 
-            <Button type="link" style={{color: 'var(--color-secondary)', marginBottom: 20}}>Отправить код повторно</Button>
+
+            <Flex>
+                <Button 
+                    type="link" 
+                    disabled={!isTimerEnd} 
+                    style={{color: isTimerEnd ? "#76767A" : "#76767A", marginBottom: 20, paddingLeft: 0}}>
+                    Отправить код повторно
+
+                    {!isTimerEnd &&
+                        <Countdown format="mm:ss" value={deadline} onFinish={onFinish} />                      
+                    }
+                </Button>
+
+
+            </Flex>
+
             <Button onClick={onGoBack} type="primary">Назад</Button>
         </Flex>
     );

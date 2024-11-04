@@ -1,0 +1,1 @@
+export { PrivatePolicy } from './PrivatePolicy'
